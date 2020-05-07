@@ -3,7 +3,7 @@
 #### **mit Johannes Hoppe**
 
 **Der Kurs ist ausgebucht.**  
-Alle Fachlichen Themen sind hier detailliert aufgelistet: https://angular.schule/schulungen/heidelberg#themen
+Alle fachlichen Themen sind hier detailliert aufgelistet: https://angular.schule/schulungen/heidelberg#themen
 
 
 # Agenda
@@ -66,8 +66,8 @@ Die Verpflegung ist für alle Teilnehmer unserer Schulung kostenlos.
 
 * Tagungsgetränke ohne Limit im Raum
 * Vormittagspause mit frisch gebrühtem Kaffee, Teeauswahl, Obstkorb mit Früchten der Saison, täglich wechselnde Snacks & Fruchtjoghurt  
-  __Hinweis: die Vormittagspause ist für einen kleinen Snack gedacht, bitte Morgens normal frühstücken, sonst reicht es nicht für alle!__
-* Mittagspause: Aufgrund geltender Auflagen muss eine Verpflegung über Lieferdienste erfolgen
+  __Hinweis: die Vormittagspause ist für einen kleinen Snack gedacht, bitte morgens normal frühstücken, sonst reicht es nicht für alle!__
+* Mittagspause: Aufgrund geltender Auflagen muss eine Verpflegung über Lieferdienste erfolgen.
 * Nachmittagpause mit frisch gebrühtem Kaffee, Teeauswahl, Obstkorb mit Früchten der Saison, Kuchen & Gebäckauswahl
 
 
