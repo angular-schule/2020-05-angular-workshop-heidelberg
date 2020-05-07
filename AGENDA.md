@@ -2,7 +2,7 @@
 
 #### **mit Johannes Hoppe**
 
-**Der Kurs ist ausgebucht.**
+**Der Kurs ist ausgebucht.**  
 Alle Fachlichen Themen sind hier detailliert aufgelistet: https://angular.schule/schulungen/heidelberg#themen
 
 
