@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "start": "tsc && node main.js",
     "info": "tsc --version"
   },
   "author": "",
