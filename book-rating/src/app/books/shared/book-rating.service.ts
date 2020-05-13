@@ -12,7 +12,7 @@ export class BookRatingService {
   rateUp(book: Book) {
     return {
       ...book,
-      rating: book.rating < this.maxRating ? book.rating + 1 : this.minRating
+      rating: book.rating < this.maxRating ? book.rating + 1 : this.maxRating
     };
   }
 
