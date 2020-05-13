@@ -11,11 +11,11 @@
       </h2>
     </div>
     <p>{{ book.description }}</p>
+
+    <button (click)="doRateDown()"
+      class="btn btn-secondary mr-2">-</button>
+
+    <button (click)="doRateUp()"
+      class="btn btn-primary">+</button>
   </div>
 </div>
-
-<!-- the worst case -->
-<button class="btn btn-primary"
-  (click)="book.rating = book.rating - 1">
-  -
-</button>
