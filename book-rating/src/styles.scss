@@ -3,3 +3,15 @@
 $primary: #C3002F !default;
 
 @import '~@angular-schule/workshop-styles/index';
+
+
+
+.form-control.ng-dirty {
+  &.ng-valid {
+      @extend .is-valid;
+  }
+
+  &.ng-invalid {
+      @extend .is-invalid;
+  }
+}

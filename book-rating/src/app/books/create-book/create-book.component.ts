@@ -18,4 +18,9 @@ export class CreateBookComponent {
     description: new FormControl('')
   });
 
+  isInvalid(name: string) {
+    const control = this.bookForm.get(name);
+    return control.dirty && control.invalid;
+  }
+
 }
