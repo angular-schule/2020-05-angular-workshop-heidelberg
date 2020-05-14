@@ -27,4 +27,15 @@ export class CreateBookComponent {
     const control = this.bookForm.get(name);
     return control.dirty && control.hasError(code);
   }
+
+  submitForm() {
+    const newBook = {
+      ...this.bookForm.value,
+      rating: 1
+    };
+
+    // ???
+
+    this.bookForm.reset();
+  }
 }
