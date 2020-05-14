@@ -35,6 +35,10 @@ export class CreateBookComponent {
     };
 
     // ???
+    // Hands On:
+    // 1. Event mit dem Namen "create" wird emittiert (Payload: Book)
+    // 2. Ereignis wird im HTML des Dashboards empfangen
+    // 3. Das Buch wird dem Buch-Array hinzugefügt
 
     this.bookForm.reset();
   }
