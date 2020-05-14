@@ -23,4 +23,8 @@ export class CreateBookComponent {
     return control.dirty && control.invalid;
   }
 
+  hasError(name: string, code: string) {
+    const control = this.bookForm.get(name);
+    return control.dirty && control.hasError(code);
+  }
 }

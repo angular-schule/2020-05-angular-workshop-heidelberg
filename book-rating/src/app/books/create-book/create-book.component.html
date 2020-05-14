@@ -7,6 +7,14 @@
     <div *ngIf="isInvalid('isbn')" class="feedback-error">
       Fehler: Bitte geben Sie eine gültige ISBN ein!
     </div>
+
+    <div *ngIf="hasError('isbn', 'required')" class="feedback-error">
+      Sie müssen etwas eingeben!
+    </div>
+
+    <div *ngIf="hasError('isbn', 'minlength')" class="feedback-error">
+      Sie müssen mindestens 3 Zeichen eingeben!
+    </div>
   </div>
 
   <div class="form-group">
