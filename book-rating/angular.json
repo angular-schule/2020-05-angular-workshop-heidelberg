@@ -121,8 +121,15 @@
               "devServerTarget": "book-rating:serve:production"
             }
           }
+        },
+        "analyze": {
+          "builder": "@ngx-builders/analyze:analyze",
+          "options": {
+            "outputPath": "dist/book-rating"
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "book-rating"
 }
