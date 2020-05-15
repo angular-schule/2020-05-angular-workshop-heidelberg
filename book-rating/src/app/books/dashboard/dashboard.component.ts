@@ -1,45 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { Book } from '../shared/book';
-import { BookRatingService } from '../shared/book-rating.service';
-import { BookStoreService } from '../shared/book-store.service';
+import { loadBooks } from '../store/book.actions';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
   books: Book[] = [];
 
-  constructor(private bs: BookRatingService, private store: BookStoreService) {
-  }
-
-  ngOnInit(): void {
-    this.store.getBooks().subscribe(books => this.books = books);
+  constructor(private store: Store) {
+    this.store.dispatch(loadBooks());
   }
 
   doRateDown(book: Book) {
-    const ratedBook = this.bs.rateDown(book);
-    this.update(ratedBook);
+    // const ratedBook = this.bs.rateDown(book);
+    // this.update(ratedBook);
   }
 
   doRateUp(book: Book) {
-    const ratedBook = this.bs.rateUp(book);
-    // const ratedBook = {
-    //   ...book,
-    //   rating: book.rating < 5 ? book.rating + 1 : 5
-    // };
-    this.update(ratedBook);
+    // const ratedBook = this.bs.rateUp(book);
+    // this.update(ratedBook);
   }
 
   update(ratedBook: Book) {
-    this.books = this.books
-      .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
-      .sort((a, b) => b.rating - a.rating);
+    // this.books = this.books
+    //   .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
+    //   .sort((a, b) => b.rating - a.rating);
   }
 
   addBook(book: Book) {
-    this.books = [...this.books, book];
+    // this.books = [...this.books, book];
   }
 }
