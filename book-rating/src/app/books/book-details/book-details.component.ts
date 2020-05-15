@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 
 @Component({
@@ -25,13 +25,20 @@ export class BookDetailsComponent implements OnInit {
     };
 
     // Observable
-    const observable = of('😇', '😍', '😎');
+    const observable = new Observable<string>(subscriber => {
+      subscriber.next('🤪');
+      setTimeout(() => subscriber.next('🤪'), 1000);
+      setTimeout(() => subscriber.next('🤪'), 2000);
+      setTimeout(() => subscriber.next('😔'), 3000);
+
+      setTimeout(() => subscriber.complete(), 2000);
+    });
 
     // Subcription
     const subscription = observable.subscribe(observer);
 
     // Subscription beenden
-    subscription.unsubscribe();
+    // subscription.unsubscribe();
 
   }
 
