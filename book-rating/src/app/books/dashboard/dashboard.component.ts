@@ -1,17 +1,26 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 
 import { Book } from '../shared/book';
 import { loadBooks } from '../store/book.actions';
+import { selectBooks, selectBooksLoading, bookWithIsbn } from '../store/book.selectors';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
-  books: Book[] = [];
+  // tslint:disable-next-line: no-string-literal
+  // booksBAD$ = this.store.pipe(map(x => x['book'].books));
+
+  books$ = this.store.pipe(select(selectBooks));
+  loading$ = this.store.pipe(select(selectBooksLoading));
+  book42$ = this.store.pipe(select(bookWithIsbn, { isbn: 42}));
+
 
   constructor(private store: Store) {
     this.store.dispatch(loadBooks());
