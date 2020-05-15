@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observable, timer, Subscription, from } from 'rxjs';
-import { map, filter, reduce, mergeMap, concatMap, switchMap } from 'rxjs/operators';
-import { Book } from '../shared/book';
+import { map, switchMap } from 'rxjs/operators';
+
 import { BookStoreService } from '../shared/book-store.service';
 
 
@@ -11,16 +10,12 @@ import { BookStoreService } from '../shared/book-store.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent {
 
-  book: Book;
+  book$ = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('isbn')),
+    switchMap(isbn => this.store.getSingleBook(isbn))
+  );
 
   constructor(private route: ActivatedRoute, private store: BookStoreService) { }
-
-  ngOnInit() {
-    this.route.paramMap.pipe(
-      map(paramMap => paramMap.get('isbn')),
-      switchMap(isbn => this.store.getSingleBook(isbn))
-    ).subscribe(book => this.book = book);
-  }
 }
