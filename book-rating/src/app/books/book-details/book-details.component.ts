@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, share } from 'rxjs/operators';
+import { map, switchMap, share, shareReplay } from 'rxjs/operators';
 
 import { BookStoreService } from '../shared/book-store.service';
 
@@ -17,7 +17,7 @@ export class BookDetailsComponent {
   book$ = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
     switchMap(isbn => this.store.getSingleBook(isbn)),
-    share()
+    shareReplay(1)
   );
 
   constructor(private route: ActivatedRoute, private store: BookStoreService) { }
