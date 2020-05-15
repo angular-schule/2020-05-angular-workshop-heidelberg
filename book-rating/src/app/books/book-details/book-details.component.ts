@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observable, timer, Subscription, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter, reduce } from 'rxjs/operators';
 
 
 @Component({
@@ -28,11 +28,10 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
     // Observable
     const observable = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).pipe(
-      map(x => x * 10)
-      // Hand on!
-      // 2. filtere Werte heraus, so das nur noch Werte größer als 30 emittiert werden
-      // 3. bilde die Summe aus allem (nur einmal!)
-      // 4. fies: Zeige die selbe Anzahl an Raketen (🚀) an, wie die Summer groß ist
+      map(x => x * 10),
+      filter(x => x > 30),
+      reduce((x, y) => x + y),
+      map(summe => '🚀'.repeat(summe))
     );
 
     // Subcription
