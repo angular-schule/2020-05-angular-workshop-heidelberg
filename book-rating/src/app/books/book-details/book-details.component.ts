@@ -17,14 +17,21 @@ export class BookDetailsComponent implements OnInit {
   async ngOnInit() {
     this.isbn = this.route.snapshot.paramMap.get('isbn');
 
-    // Observer!
+    // Observer
     const observer = {
       next: smilie => console.log(smilie),
       error: e => console.error(e),
       complete: () => console.log('COMPLETE!')
     };
 
-    of('😇', '😍', '😎').subscribe(observer);
+    // Observable
+    const observable = of('😇', '😍', '😎');
+
+    // Subcription
+    const subscription = observable.subscribe(observer);
+
+    // Subscription beenden
+    subscription.unsubscribe();
 
   }
 
