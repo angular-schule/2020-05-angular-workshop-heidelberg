@@ -1,7 +1,10 @@
 <ng-container *ngIf="book$ | async as book">
   <h2>Book Nr. {{ book.isbn }}</h2>
 
-  <a (click)="showDetails = !showDetails">Toggle Details</a>
+  <a (click)="showDetails = !showDetails">
+    Toggle Details
+  </a><br>
+
   <p *ngIf="showDetails">
     Details:
     {{ book.description }}
@@ -10,4 +13,8 @@
 
 <a routerLink="/books/9783864902079">
   Go to Book 9783864902079
+</a><br>
+
+<a routerLink="/books/69">
+  Go to Book 69
 </a>
