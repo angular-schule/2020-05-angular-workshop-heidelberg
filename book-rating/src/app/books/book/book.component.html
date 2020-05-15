@@ -1,7 +1,9 @@
 <div class="card mb-4">
   <div class="card-body bg-light">
-      <img class="img-thumbnail float-right"
-        src="//api.angular.schule/avatar/{{ book.rating }}">
+      <img
+        *ngIf="book.thumbnails.length"
+        class="img-thumbnail float-right mr-4" width="200"
+        [src]="book.thumbnails[0].url">
     <div class="card-title">
       <h2>
         {{ book.title }}
