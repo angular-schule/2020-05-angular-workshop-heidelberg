@@ -28,17 +28,22 @@ export class BookDetailsComponent implements OnInit {
     const observable = new Observable<string>(subscriber => {
       subscriber.next('🤪');
       setTimeout(() => subscriber.next('🤪'), 1000);
-      setTimeout(() => subscriber.next('🤪'), 2000);
+      const x = setTimeout(() => { subscriber.next('🤪'); console.log('Das Licht im Kühlschrank brennt!') }, 2000);
       setTimeout(() => subscriber.next('😔'), 3000);
 
       setTimeout(() => subscriber.complete(), 2000);
+
+      return () => {
+        console.log('Mach das Licht aus, die Subscription ist beendet!');
+        clearTimeout(x);
+      };
     });
 
     // Subcription
     const subscription = observable.subscribe(observer);
 
     // Subscription beenden
-    // subscription.unsubscribe();
+    subscription.unsubscribe();
 
   }
 
