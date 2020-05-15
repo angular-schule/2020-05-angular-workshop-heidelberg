@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 
 @Component({
@@ -16,7 +17,13 @@ export class BookDetailsComponent implements OnInit {
   async ngOnInit() {
     this.isbn = this.route.snapshot.paramMap.get('isbn');
 
-    console.log('Connected!!! ');
+    // Los geht'!
+
+    of('😇', '😍', '😎').subscribe(
+      smilie => console.log(smilie),
+      e => console.error(e),
+      () => console.log('COMPLETE!')
+    );
 
   }
 
