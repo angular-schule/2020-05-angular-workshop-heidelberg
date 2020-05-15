@@ -2,13 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
-function connect() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(), 2000);
-    // Wenn Fehler: reject();
-  });
-}
-
 @Component({
   selector: 'br-book-details',
   templateUrl: './book-details.component.html',
@@ -23,7 +16,6 @@ export class BookDetailsComponent implements OnInit {
   async ngOnInit() {
     this.isbn = this.route.snapshot.paramMap.get('isbn');
 
-    await connect();
     console.log('Connected!!! ');
 
   }
