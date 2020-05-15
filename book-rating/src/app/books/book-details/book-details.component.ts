@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observable } from 'rxjs';
+import { of, Observable, timer, Subscription } from 'rxjs';
 
 
 @Component({
@@ -8,13 +8,14 @@ import { of, Observable } from 'rxjs';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, OnDestroy {
 
   isbn: string;
+  subscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.isbn = this.route.snapshot.paramMap.get('isbn');
 
     // Observer
@@ -25,26 +26,15 @@ export class BookDetailsComponent implements OnInit {
     };
 
     // Observable
-    const observable = new Observable<string>(subscriber => {
-      subscriber.next('🤪');
-      setTimeout(() => subscriber.next('🤪'), 1000);
-      const x = setTimeout(() => { subscriber.next('🤪'); console.log('Das Licht im Kühlschrank brennt!') }, 2000);
-      setTimeout(() => subscriber.next('😔'), 3000);
-
-      setTimeout(() => subscriber.complete(), 2000);
-
-      return () => {
-        console.log('Mach das Licht aus, die Subscription ist beendet!');
-        clearTimeout(x);
-      };
-    });
+    const observable = timer(0, 500);
 
     // Subcription
-    const subscription = observable.subscribe(observer);
+    this.subscription = observable.subscribe(observer);
+  }
 
+  ngOnDestroy() {
     // Subscription beenden
-    subscription.unsubscribe();
-
+    this.subscription.unsubscribe();
   }
 
 }
